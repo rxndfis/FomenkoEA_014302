@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="ru" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <title>Предложения сотрудников</title>
+</head>
+
+<head th:insert="blocks/head :: head"></head>
+
+<body class="d-flex flex-column min-vh-100">
+
+<div th:insert="blocks/nav :: nav"></div>
+
+<main class="page catalog-page">
+    <section class="clean-block clean-catalog dark">
+        <div class="container">
+            <div class="block-heading">
+                <h2 class="text-info">Предложения сотрудников</h2>
+            </div>
+            <div class="content">
+                <div class="row">
+                    <div th:each="i : ${offers}" class="col-3 m-3">
+                        <img class="img-fluid d-block mx-auto p-3 rounded-5"
+                             th:src="'/img/' + ${i.user.primarys.photo}">
+                        <p>ФИО: <span th:text="${i.user.primarys.getFIO()}"></span></p>
+                        <p>Вакансия: <span th:text="${i.offer}"></span></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</main>
+
+<footer th:insert="blocks/footer :: footer" class="page-footer dark mt-auto"></footer>
+
+<script src="/js/bootstrap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/baguettebox.js/1.11.1/baguetteBox.min.js"></script>
+<script src="/js/vanilla-zoom.js"></script>
+<script src="/js/theme.js"></script>
+
+</body>
+
+</html>
